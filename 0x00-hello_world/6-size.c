@@ -1,6 +1,6 @@
 #include <stdio.h>
 /**
- * main - print various sizes of data types
+ * main - Entry point
  * Description: print sizes of a char, an int,
  * long int, long long int and a float
  * Return: return zero

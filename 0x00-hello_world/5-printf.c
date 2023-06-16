@@ -1,6 +1,6 @@
 #include <stdio.h>
 /**
- * main - print a string
+ * main - Entry point
  * Description: use the printf to print a string to
  * the standard output
  * Return: return zero
