@@ -5,7 +5,7 @@
  * Description: computes the absolute value of an integer
  * Return: return 1 on success
  */
-int _abs(int)
+int _abs(int a)
 {
 	if (a < 0)
 	{
