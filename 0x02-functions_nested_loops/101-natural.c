@@ -15,7 +15,7 @@ int main(void)
 		mod_5 = i % 5;
 		if ((mod_3 == 0) || (mod_5 == 0))
 		{
-			sum = sum + 1;
+			sum = sum + i;
 		}
 	}
 	printf("%d\n", sum);
