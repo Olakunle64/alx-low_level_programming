@@ -24,13 +24,14 @@ int main(void)
 		}
 		else if (i % 3 == 0)
 		{
-			printf("Fizze");
+			printf("Fizz");
 		}
 		else
 		{
 			printf("%d", i);
 		}
-		putchar(' ');
+		if (i != 100)
+			putchar(' ');
 	}
 	putchar('\n');
 	return (0);
