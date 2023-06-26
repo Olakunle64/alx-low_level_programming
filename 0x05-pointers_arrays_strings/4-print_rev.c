@@ -29,13 +29,13 @@ int _strlen(char *str)
 
 void print_rev(char *s)
 {
-	int len;
+	int leng;
 
-	len = _strlen(s);
-	while (len >= 0)
+	leng = _strlen(s);
+	while (leng >= 0)
 	{
-		_putchar(s[len]);
-		len--;
+		_putchar(s[leng]);
+		leng--;
 	}
 	_putchar('\n');
 }
