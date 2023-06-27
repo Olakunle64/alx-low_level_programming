@@ -12,11 +12,11 @@
  */
 void print_array(int *a, int n)
 {
-	signed long long int i;
+	signed long int i;
 
 	for (i = 0; i < n; i++)
 	{
-		printf("%ld", a[i]);
+		printf("%d", a[i]);
 		if (i != (n - 1))
 		{
 			_putchar(',');
