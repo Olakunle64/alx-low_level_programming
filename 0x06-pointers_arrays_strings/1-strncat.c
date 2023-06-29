@@ -34,6 +34,7 @@ int _strlen(char *s)
 char *_strncat(char *dest, char *src, int n)
 {
 	int len1;
+	int len2 = 0;
 	int i = 0;
 
 	if (n <= 0)
@@ -41,7 +42,11 @@ char *_strncat(char *dest, char *src, int n)
 		return (dest);
 	}
 	len1 = _strlen(dest);
-	for (i = 0; i != n; i++)
+	while (src[len2] != src[n])
+	{
+		len2++;
+	}
+	for (i = 0; i < len2; i++)
 	{
 		dest[len1 + i] = src[i];
 	}
