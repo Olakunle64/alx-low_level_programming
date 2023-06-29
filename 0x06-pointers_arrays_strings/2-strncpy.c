@@ -36,7 +36,7 @@ char *_strncpy(char *dest, char *src, int n)
 
 	if (n <= 0)
 	{
-		return(dest);
+		return (dest);
 	}
 	r_len = _strlen(src);
 	while (src[len2] != src[n])
