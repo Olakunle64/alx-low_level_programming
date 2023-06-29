@@ -47,9 +47,9 @@ char *_strncpy(char *dest, char *src, int n)
 	{
 		dest[i] = src[i];
 	}
-	sub = n - r_len;
 	if (n > r_len)
 	{
+		sub = n - r_len;
 		while (sub > 1)
 		{
 			dest[i] = '\0';
