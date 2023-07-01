@@ -31,7 +31,7 @@ char _strlen(char *str)
 
 char *cap_string(char *s)
 {
-	int i;
+	int i = 0;
 	int len = _strlen(s);
 
 	if ((s[i] >= 97 && s[i] <= 122))
