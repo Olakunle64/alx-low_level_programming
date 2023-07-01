@@ -1,6 +1,31 @@
 #include "main.h"
 
 /**
+ * check_4_alpha - check for a specific alphabet
+ * @s: string
+ * @a: first alphabet to check
+ * @b: second alphabet to check
+ * @rep: replace the alphabet that correspond to a and b with rep
+ *
+ * Description: check for a specific alphabet and swap it with the value of rep
+ * Return: return a pointer to the string.
+ */
+
+char *check_4_alpha(char *s, char a, char b, char rep)
+{
+	int i;
+
+	for (i = 0; s[i] != '\0'; i++)
+	{
+		if (s[i] == a || s[i] == b)
+		{
+			s[i] = rep;
+		}
+	}
+	return (s);
+}
+
+/**
  * leet - encode string into 1337
  * @s: string
  *
@@ -11,34 +36,10 @@
 
 char *leet(char *s)
 {
-	int i = 0;
-
-	for (i = 0; s[i] != '\0'; i++)
-	{
-	if (s[i] == 'a' || s[i] == 'A')
-	{
-		s[i] = 52;
-	}
-	else if (s[i] == 'e' || s[i] == 'E')
-	{
-		s[i] = 51;
-	}
-	else if (s[i] == 'o' || s[i] == 'O')
-	{
-		s[i] = 48;
-	}
-	else if (s[i] == 't' || s[i] == 'T')
-	{
-		s[i] = 55;
-	}
-	else if (s[i] == 'l' || s[i] == 'L')
-	{
-		s[i] = 49;
-	}
-	else
-	{
-		continue;
-	}
-	}
+	check_4_alpha(s, 'a', 'A', '4');
+	check_4_alpha(s, 'e', 'E', '3');
+	check_4_alpha(s, 'o', 'O', '0');
+	check_4_alpha(s, 't', 'T', '7');
+	check_4_alpha(s, 'l', 'L', '1');
 	return (s);
 }
