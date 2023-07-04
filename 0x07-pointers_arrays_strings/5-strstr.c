@@ -9,7 +9,7 @@
  * in the string haystack. The terminating null bytes are not
  * compared.
  * Return: return a pointer to the beginning of the located
- * substring, or NULL if the substring is not found.
+ * substring or NULL if the substring is not found.
  */
 
 char *_strstr(char *haystack, char *needle)
@@ -29,7 +29,7 @@ char *_strstr(char *haystack, char *needle)
 	}
 	for (i = 0; i < len1; i++)
 	{
-		for (j = i, k = 0; j < len2; k++, j++)
+		for (j = i, k = 0; k < len2; k++, j++)
 		{
 			if (haystack[j] != needle[k])
 			{
