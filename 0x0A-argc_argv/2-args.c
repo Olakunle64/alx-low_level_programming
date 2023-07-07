@@ -17,6 +17,5 @@ int main(int argc, char **argv)
 	{
 		printf("%s\n", *(argv + i));
 	}
-	putchar('\n');
 	return (0);
 }
