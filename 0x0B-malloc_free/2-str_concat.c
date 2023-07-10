@@ -46,13 +46,19 @@ char *str_concat(char *s1, char *s2)
 	ptr = malloc(T_len * sizeof(char));
 	if (ptr)
 	{
-		for (i = 0; i < len_1 - 1 && s1 != NULL; i++)
+		if (s1 != NULL)
+		{
+		for (i = 0; i < len_1 - 1; i++)
 		{
 			ptr[i] = s1[i];
 		}
+		}
+		if (s2 != NULL)
+		{
 		for (j = 0; j < len_2 && s2 != NULL; j++)
 		{
 			ptr[i + j] = s2[j];
+		}
 		}
 		ptr[i + j] = '\0';
 		return (ptr);
