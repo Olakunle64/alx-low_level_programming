@@ -33,7 +33,7 @@ int _strlen(char *s)
 
 int array_len(int ac, char **av)
 {
-	int i, j, total_length;
+	int i, j, total_length = 0;
 
 	for (i = 0; i < ac; i++)
 	{
@@ -105,7 +105,7 @@ void free_d_array(int ac, char **str)
 
 char *argstostr(int ac, char **av)
 {
-	int i, j;
+	int i, j, k = 0;
 	char *new_string;
 
 	if (ac == 0 || av == NULL)
@@ -117,9 +117,10 @@ char *argstostr(int ac, char **av)
 		{
 			for (j = 0; j < _strlen(av[i]); j++)
 			{
-				new_string[i + j] = av[i][j];
+				new_string[k + j] = av[i][j];
 			}
-			new_string[i + j] = '\n';
+			new_string[k + j] = '\n';
+			k = k + _strlen(av[i]) + 1;
 		}
 		return (new_string);
 	}
