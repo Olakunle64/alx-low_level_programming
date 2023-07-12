@@ -86,33 +86,36 @@ int start_of_char(char *str)
 
 char **strtow(char *str)
 {
-	int i, j, k;
+	int i, j, k, word, start, word_length;
 	char **arr;
 
 	if (str == NULL)
 		str = "";
 	if (str == NULL)
 		return (NULL);
-	arr = malloc(word_count(str) * sizeof(*arr));
+	word = word_count(str);
+	arr = malloc(word * sizeof(*arr));
 	if (arr)
 	{
-		for (i = 0; i < word_count(str) + i; i++)
+		for (i = 0; i < word; i++)
 		{
-			arr[i] = malloc(char_count(str) * sizeof(char) + 2);
+			start = start_of_char(str);
+			word_length = char_count(str + start);
+			arr[i] = malloc((word_length + 1) * sizeof(char));
 			if (arr[i])
 			{
-			for (j = start_of_char(str), k = 0; j <= char_count(str) + j; j++, k++)
+			for (j = start, k = 0; j <= start + word_length; j++, k++)
 			{
 				arr[i][k] = str[j];
 			}
 			arr[i][k] = '\0';
-			arr[i][k] = '\n';
+			str += start + word_length;
 			}
 			else
 			{
 				for (k = 0; k < i; k++)
 				{
-					free(arr[i]);
+					free(arr[k]);
 				}
 				free(arr);
 				return (NULL);
