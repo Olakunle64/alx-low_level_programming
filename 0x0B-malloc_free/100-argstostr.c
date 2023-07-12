@@ -110,7 +110,7 @@ char *argstostr(int ac, char **av)
 
 	if (ac == 0 || av == NULL)
 		return (NULL);
-	new_string = malloc(array_len(ac, av) * sizeof(char) + ac);
+	new_string = malloc(array_len(ac, av) * sizeof(char) + ac + 1);
 	if (new_string)
 	{
 		for (i = 0; i < ac; i++)
