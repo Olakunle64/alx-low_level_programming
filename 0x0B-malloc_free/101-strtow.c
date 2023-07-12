@@ -2,10 +2,12 @@
 #include <stdlib.h>
 
 /**
- * char_count - count the number of character excluding white spaces in a string
+ * char_count - count the number of character excluding
+ * white spaces in a string
  * @str: string
  *
- * Description: This function is meant to count the number of characters in a given string.
+ * Description: This function is meant to count the number
+ * of characters in a given string.
  * Return: return the length of the characters.
  */
 
@@ -53,7 +55,7 @@ int word_count(char *s)
 
 /**
  * start_of_char - locate the starting point of a word
- * @s: string
+ * @str: string
  *
  * Description: This function is meant to locate the starting point
  * of a word.
@@ -68,8 +70,7 @@ int start_of_char(char *str)
 	{
 		if (str[i] != ' ')
 			break;
-		else
-			j++;
+		j++;
 	}
 	return (j + 1);
 }
@@ -98,7 +99,7 @@ char **strtow(char *str)
 		for (i = 0; i < word_count(str) + i; i++)
 		{
 			arr[i] = malloc(char_count(str) * sizeof(char) + 2);
-			if(arr[i])
+			if (arr[i])
 			{
 			for (j = start_of_char(str), k = 0; j <= char_count(str) + j; j++, k++)
 			{
