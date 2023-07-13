@@ -1,8 +1,9 @@
 #include "main.h"
 #include <stdio.h>
-#include <string.h>
 #include <stdlib.h>
-void simple_print_buffer(int *buffer, unsigned int size)
+#include <string.h>
+
+void simple_print_buffer(char *buffer, unsigned int size)
 {
 	    unsigned int i;
 
@@ -25,10 +26,17 @@ void simple_print_buffer(int *buffer, unsigned int size)
 
 int main(void)
 {
-	    int *a;
+	    char *p;
+	        int i;
 
-	        a = array_range(0, 10);
-		    simple_print_buffer(a, 11);
-		        free(a);
-			    return (0);
+		    p = malloc(sizeof(char) * 10);
+		        p = _realloc(p, sizeof(char) * 10, sizeof(char) * 98);
+			    i = 0;
+			        while (i < 98)
+					    {
+						            p[i++] = 98;
+							        }
+				    simple_print_buffer(p, 98);
+				        free(p);
+					    return (0);
 }
