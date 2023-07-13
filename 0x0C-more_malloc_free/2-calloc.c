@@ -16,15 +16,17 @@ void *_calloc(unsigned int nmemb, unsigned int size)
 {
 	unsigned int i;
 	void *ptr;
+	char *byteptr;
 
 	if (nmemb <= 0 || size <= 0)
 		return (NULL);
 	ptr = malloc(nmemb * size);
 	if (ptr)
 	{
+		byteptr = (char *)ptr;
 		for (i = 0; i < nmemb; i++)
 		{
-			ptr + sizeof(size) = 0;
+			byteptr[i] = 0;
 		}
 		return (ptr);
 	}
