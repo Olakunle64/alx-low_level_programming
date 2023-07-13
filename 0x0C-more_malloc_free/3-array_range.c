@@ -13,16 +13,18 @@
 
 int *array_range(int min, int max)
 {
-	int i, k;
+	int i, k, sum;
 	int *new_array;
 
 	if (min > max)
 		return (NULL);
-	max++;
-	new_array = malloc(max - min * sizeof(*new_array));
+	if (min == 0)
+		sum = max - min;
+	sum = (max - min) + 1;
+	new_array = malloc(sum * sizeof(*new_array));
 	if (new_array)
 	{
-		for (i = min, k = 0; i <= max - 1; i++, k++)
+		for (i = min, k = 0; i <= max ; i++, k++)
 		{
 			new_array[k] = i;
 		}
