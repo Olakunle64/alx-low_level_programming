@@ -1,8 +1,8 @@
 #ifndef DOG_H
 #define DOG_H
 
-/*
- * struct dog - This is a structure that contains 3 members
+/**
+ * struct dog - structure of 3 elements
  * @name: name
  * @age: age
  * @owner: owner
