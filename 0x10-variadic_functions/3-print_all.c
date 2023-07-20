@@ -60,9 +60,10 @@ void print_all(const char * const format, ...)
 				break;
 			case 's':
 				s = va_arg(call, char *);
-				if (s == NULL)
+				if (s)
+					printf("%s", s);
+				else
 					printf("(nil)");
-				printf("%s", s);
 				space_comma(j, count);
 				break;
 		}
