@@ -46,27 +46,28 @@ void print_all(const char * const format, ...)
 			case 'c':
 				c = (char)va_arg(call, int);
 				printf("%c", c);
-				space_comma(j, count);
 				break;
 			case 'i':
 				i = va_arg(call, int);
 				printf("%d", i);
-				space_comma(j, count);
 				break;
 			case 'f':
 				f = (float)va_arg(call, double);
 				printf("%f", f);
-				space_comma(j, count);
 				break;
 			case 's':
 				s = va_arg(call, char *);
 				if (s)
+				{
 					printf("%s", s);
-				else
-					printf("(nil)");
-				space_comma(j, count);
+					break;
+				}
+				printf("(nil)");
 				break;
 		}
+		if (j != count - 1 && (format[j] == 'c' ||
+					format[j] == 's' || format[j] == 'i'))
+			printf(", ");
 		j++;
 	}
 	putchar('\n');
