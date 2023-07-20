@@ -4,25 +4,6 @@
 #include "variadic_functions.h"
 
 /**
- * space_comma - print a comma followed by a space
- * @j: first integer
- * @count: second integer
- *
- * Description: this function is meant to print a comma
- * followed by a space
- * Return: void
- */
-
-void space_comma(int j, int count)
-{
-	if (j != count - 1)
-	{
-		putchar(',');
-		putchar(' ');
-	}
-}
-
-/**
  * print_all - print anything
  * @format: a list of types of arguments passed to the function
  *
