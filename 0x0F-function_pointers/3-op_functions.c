@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "3-cal.h"
+#include "3-calc.h"
 
 /**
  * op_add - add two integers
@@ -25,7 +25,7 @@ int op_add(int a, int b)
  * Return: return the difference of a and b
  */
 
-int op_sub(int a, int b);
+int op_sub(int a, int b)
 {
 	return (a - b);
 }
@@ -73,5 +73,5 @@ int op_div(int a, int b)
 int op_mod(int a, int b)
 {
 	return (a % b);
-}use != 0 instead of > 0
+}
 
