@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdarg.h>
-#include <stdlib.h>
+#include <string.h>
 #include "variadic_functions.h"
 
 /**
@@ -34,18 +34,14 @@ void space_comma(int j, int count)
 void print_all(const char * const format, ...)
 {
 	va_list call;
-	char c;
-	int i;
+	char c, *s;
+	int i, count = strlen(format), j = 0;
 	float f;
-	char *s;
-	int j = 0;
-	int count;
 
-	count = strlen(format);
 	va_start(call, format);
 	while (format[j])
 	{
-		switch(format[j])
+		switch (format[j])
 		{
 			case 'c':
 				c = (char)va_arg(call, int);
@@ -64,11 +60,10 @@ void print_all(const char * const format, ...)
 				break;
 			case 's':
 				s = va_arg(call, char *);
-				if (s)
-					printf("%s", s);
-				else
+				if (s == NULL)
 					printf("(nil)");
-				space_comma(j, count)
+				printf("%s", s);
+				space_comma(j, count);
 				break;
 		}
 		j++;
