@@ -37,6 +37,21 @@ void print_a_string(char *s)
  * Return: void
  */
 
+/**
+ * print_new_line - print a newline base on a condition
+ * 
+ * Return: void
+ */
+
+void print_new_line(int count)
+{
+	while (count > 0)
+	{
+		putchar('\n');
+		break;
+	}
+}
+
 void print_all(const char * const format, ...)
 {
 	va_list call;
@@ -72,6 +87,6 @@ void print_all(const char * const format, ...)
 			printf(", ");
 		j++;
 	}
-	putchar('\n');
+	print_new_line(count);
 	va_end(call);
 }
