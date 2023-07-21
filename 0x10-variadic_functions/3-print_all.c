@@ -36,9 +36,9 @@ void print_a_string(char *s)
  * Return: void
  */
 
-void print_new_line(int count)
+void print_new_line(int count, int k)
 {
-	while (count > 0)
+	while (count > 0 && k > 0)
 	{
 		putchar('\n');
 		break;
@@ -58,7 +58,7 @@ void print_all(const char * const format, ...)
 {
 	va_list call;
 	char c, *s;
-	int i, count, j = 0;
+	int i, count, j = 0, k = 0;
 	float f;
 
 	__exit(format);
@@ -71,17 +71,21 @@ void print_all(const char * const format, ...)
 			case 'c':
 				c = (char)va_arg(call, int);
 				printf("%c", c);
+				k++;
 				break;
 			case 'i':
 				i = va_arg(call, int);
 				printf("%d", i);
+				k++;
 				break;
 			case 'f':
 				f = (float)va_arg(call, double);
 				printf("%f", f);
+				k++;
 				break;
 			case 's':
 				s = va_arg(call, char *);
+				k++;
 				print_a_string(s);
 		}
 		if (j != count - 1 && (format[j] == 'c' ||
@@ -89,6 +93,6 @@ void print_all(const char * const format, ...)
 			printf(", ");
 		j++;
 	}
-	print_new_line(count);
+	print_new_line(count, k);
 	va_end(call);
 }
