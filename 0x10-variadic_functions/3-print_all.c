@@ -28,11 +28,9 @@ void print_a_string(char *s)
 {
 	while (s)
 	{
-		printf("%s", s);
+		(s) ? printf("%s", s) : printf("(nil)");
 		break;
 	}
-	exit(0);
-	printf("(nil)");
 }
 /**
  * print_all - print anything
