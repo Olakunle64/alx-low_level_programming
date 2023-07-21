@@ -2,7 +2,41 @@
 #include <stdarg.h>
 #include <string.h>
 #include "variadic_functions.h"
+#include <stdlib.h>
 
+/**
+ * __exit - terminate a program if the argument is NULL
+ * @format: the argument
+ *
+ * Return: void
+ */
+
+void __exit(const char * const format)
+{
+	if (format == NULL)
+		exit(EXIT_FAILURE);
+}
+
+/**
+ * print_a_string - print a string to stdout
+ * @s: string
+ *
+ * Return: void
+ */
+
+void print_a_string(char *s)
+{
+	while (s)
+	{
+		if (s)
+		{
+			printf("%s", s);
+			break;
+		}
+		printf("(nil)");
+		break;
+	}
+}
 /**
  * print_all - print anything
  * @format: a list of types of arguments passed to the function
@@ -16,9 +50,11 @@ void print_all(const char * const format, ...)
 {
 	va_list call;
 	char c, *s;
-	int i, count = strlen(format), j = 0;
+	int i, count, j = 0;
 	float f;
 
+	__exit(format);
+	count = strlen(format);
 	va_start(call, format);
 	while (format[j])
 	{
@@ -38,13 +74,7 @@ void print_all(const char * const format, ...)
 				break;
 			case 's':
 				s = va_arg(call, char *);
-				if (s)
-				{
-					printf("%s", s);
-					break;
-				}
-				printf("(nil)");
-				break;
+				print_a_string(s);
 		}
 		if (j != count - 1 && (format[j] == 'c' ||
 			format[j] == 's' || format[j] == 'i' || format[j] == 'f'))
