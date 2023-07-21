@@ -26,11 +26,7 @@ void __exit(const char * const format)
 
 void print_a_string(char *s)
 {
-	while (s)
-	{
-		(s) ? printf("%s", s) : printf("(nil)");
-		break;
-	}
+	(s) ? printf("%s", s) : printf("(nil)");
 }
 /**
  * print_all - print anything
