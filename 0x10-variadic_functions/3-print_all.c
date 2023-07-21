@@ -28,14 +28,10 @@ void print_a_string(char *s)
 {
 	while (s)
 	{
-		if (s)
-		{
-			printf("%s", s);
-			break;
-		}
-		printf("(nil)");
-		break;
+		printf("%s", s);
+		exit(EXIT_SUCCESS);
 	}
+	printf("(nil)");
 }
 /**
  * print_all - print anything
