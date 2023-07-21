@@ -29,8 +29,9 @@ void print_a_string(char *s)
 	while (s)
 	{
 		printf("%s", s);
-		exit(EXIT_SUCCESS);
+		break;
 	}
+	exit(0);
 	printf("(nil)");
 }
 /**
