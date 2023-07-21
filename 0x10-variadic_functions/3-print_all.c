@@ -28,18 +28,11 @@ void print_a_string(char *s)
 {
 	(s) ? printf("%s", s) : printf("(nil)");
 }
-/**
- * print_all - print anything
- * @format: a list of types of arguments passed to the function
- *
- * Description: This function is meant to print anything inputed
- * by the user
- * Return: void
- */
 
 /**
  * print_new_line - print a newline base on a condition
- * 
+ * @count: integer
+ *
  * Return: void
  */
 
@@ -51,6 +44,15 @@ void print_new_line(int count)
 		break;
 	}
 }
+
+/**
+ * print_all - print anything
+ * @format: a list of types of arguments passed to the function
+ *
+ * Description: This function is meant to print anything inputed
+ * by the user
+ * Return: void
+ */
 
 void print_all(const char * const format, ...)
 {
