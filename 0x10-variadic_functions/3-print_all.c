@@ -89,6 +89,6 @@ void print_all(const char * const format, ...)
 			printf(", ");
 		j++;
 	}
-	print_new_line(count);
+	putchar('\n');
 	va_end(call);
 }
