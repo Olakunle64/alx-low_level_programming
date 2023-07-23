@@ -14,7 +14,10 @@
 void __exit(const char * const format)
 {
 	if (format == NULL)
+	{
+		putchar('\n');
 		exit(EXIT_FAILURE);
+	}
 }
 
 /**
@@ -83,6 +86,9 @@ void print_all(const char * const format, ...)
 			case 's':
 				s = va_arg(call, char *);
 				print_a_string(s);
+			default:
+				k++;
+				break;
 		}
 		if (j != count - 1 && (format[j] == 'c' ||
 			format[j] == 's' || format[j] == 'i' || format[j] == 'f'))
