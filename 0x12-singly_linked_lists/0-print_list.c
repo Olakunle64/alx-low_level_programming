@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include "main.h"
 
 /**
@@ -20,5 +21,6 @@ size_t print_list(const list_t *h)
 		i++;
 		h = h->next;
 	}
+	_putchar('\n');
 	return (i);
 }
