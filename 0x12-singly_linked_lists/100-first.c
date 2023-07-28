@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include "lists.h"
 
+void pre_print(void) __attribute__((constructor));
 /**
  * pre_print - print a statement before the main is executed
  *
