@@ -7,8 +7,8 @@
  * Return: void
  */
 
-void pre_print()
+void pre_print(void)
 {
-	printf("You're beat! and yet, you must allow, \nI bore my
-			house upoin my back!\n");
+	printf("You're beat! and yet, you must allow, \n"
+		"I bore my house upoin my back!\n");
 }
