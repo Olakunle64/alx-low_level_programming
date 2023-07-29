@@ -11,5 +11,5 @@ void pre_print(void) __attribute__((constructor));
 void pre_print(void)
 {
 	printf("You're beat! and yet, you must allow,\n"
-		"I bore my house upoin my back!\n");
+		"I bore my house upon my back!\n");
 }
