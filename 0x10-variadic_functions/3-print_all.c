@@ -15,7 +15,6 @@ void __exit(const char * const format)
 {
 	if (format == NULL)
 	{
-		putchar('\n');
 		exit(EXIT_FAILURE);
 	}
 }
