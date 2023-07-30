@@ -17,16 +17,25 @@ char *rot13(char *s)
 
 	for (i = 0; s[i] != '\0'; i++)
 	{
-		for (fd = 97, rep = 110; fd <= 110 && rep <= 122; fd++, rep++)
+		if (s[i] >= 'A' && s[i] <= 'Z')
+		{
+			for (fd = 'A', rep = 'N'; fd <= 'N' && rep <= 'Z'; fd++, rep++)
+			{
+				if (s[i] == fd)
+					s[i] = rep;
+				else if (s[i] == rep)
+					s[i] = fd;
+			}
+		}
+		else
+		{
+		for (fd = 'a', rep = 'n'; fd <= 'n' && rep <= 'z'; fd++, rep++)
 		{
 			if (s[i] == fd)
-			{
 				s[i] = rep;
-			}
 			else if (s[i] == rep)
-			{
 				s[i] = fd;
-			}
+		}
 		}
 	}
 	return (s);
