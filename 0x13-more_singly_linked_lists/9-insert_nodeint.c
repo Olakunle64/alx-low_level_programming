@@ -47,7 +47,7 @@ listint_t *insert_nodeint_at_index(listint_t **head, unsigned int idx, int n)
 	if (newnode == NULL)
 		return (NULL);
 	newnode->n = n;
-	n_count = 0;
+	n_count = 1;
 	while (n_count < idx)
 	{
 		k_track = k_track->next;
