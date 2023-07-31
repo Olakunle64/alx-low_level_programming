@@ -10,15 +10,16 @@
 
 void free_listint2(listint_t **head)
 {
-	listint_t *k_track;
+	listint_t *k_track, *temp;
 
 	if (*head == NULL)
 		return;
 	k_track = *head;
 	while (k_track != NULL)
 	{
-		free(k_track);
+		temp = k_track;
 		k_track = k_track->next;
+		free(k_track);
 	}
 	*head = NULL;
 }
