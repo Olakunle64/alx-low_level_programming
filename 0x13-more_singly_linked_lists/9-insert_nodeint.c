@@ -54,7 +54,7 @@ listint_t *insert_nodeint_at_index(listint_t **head, unsigned int idx, int n)
 		n_count++;
 	}
 	newnode->next = k_track;
-	k_track = newnode;
+	k_track->next = newnode;
 	return (newnode);
 }
 

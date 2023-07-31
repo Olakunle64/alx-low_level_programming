@@ -10,15 +10,11 @@
 
 void free_listint(listint_t *head)
 {
-	listint_t *k_track;
-
-	k_track = head;
-	if (k_track == NULL)
+	if (head == NULL)
 		return;
-
-	while (k_track != NULL)
+	while (head != NULL)
 	{
-		free(k_track);
-		k_track = k_track->next;
+		free(head);
+		head = head->next;
 	}
 }
