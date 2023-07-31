@@ -12,7 +12,7 @@ void free_listint2(listint_t **head)
 {
 	listint_t *k_track, *temp;
 
-	if (*head == NULL)
+	if (head == NULL)
 		return;
 	k_track = *head;
 	while (k_track != NULL)
