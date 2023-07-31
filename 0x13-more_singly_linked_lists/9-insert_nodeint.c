@@ -50,11 +50,11 @@ listint_t *insert_nodeint_at_index(listint_t **head, unsigned int idx, int n)
 	if (idx == 0)
 	{
 		*head = newnode;
-		newnode = NULL;
+		newnode->next = NULL;
 		return (newnode);
 	}
 	n_count = 0;
-	while (n_count <= idx)
+	while (n_count < idx)
 	{
 		k_track = k_track->next;
 		if (n_count <= idx - 2)
