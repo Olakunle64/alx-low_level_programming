@@ -35,7 +35,7 @@ unsigned int node_count(listint_t *h)
 listint_t *insert_nodeint_at_index(listint_t **head, unsigned int idx, int n)
 {
 	unsigned int n_count;
-	listint_t *k_track, *newnode;
+	listint_t *k_track, *newnode, *temp;
 
 	k_track = *head;
 	if (k_track == NULL)
@@ -47,14 +47,22 @@ listint_t *insert_nodeint_at_index(listint_t **head, unsigned int idx, int n)
 	if (newnode == NULL)
 		return (NULL);
 	newnode->n = n;
-	n_count = 1;
-	while (n_count < idx)
+	/*if (idx == 0)
+	{
+		*head = newnode;
+		newnode = NULL;
+		return (newnode);
+	}*/
+	n_count = 0;
+	while (n_count <= idx)
 	{
 		k_track = k_track->next;
+		if (n_count <= idx - 2)
+			temp = k_track;
 		n_count++;
 	}
 	newnode->next = k_track;
-	k_track = newnode;
+	temp->next = newnode;
 	return (newnode);
 }
 
