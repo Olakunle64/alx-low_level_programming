@@ -19,7 +19,7 @@ int pop_listint(listint_t **head)
 		return (0);
 	store = k_track->n;
 	*head = k_track->next;
-	/*free(k_track);*/
+	free(k_track);
 	return (store);
 }
 
