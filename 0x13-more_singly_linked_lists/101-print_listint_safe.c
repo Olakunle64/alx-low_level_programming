@@ -12,15 +12,15 @@
 
 size_t print_listint_safe(const listint_t *head)
 {
-	listint_t *k_track;
-	size_t count;
+	const listint_t *k_track;
+	size_t count = 0;
 
 	if (head == NULL)
 		exit(98);
 	k_track = head;
 	while (k_track != NULL)
 	{
-		printf("[%p] %d", (void *)k_track->next, k_track->n);
+		printf("[%p] %d\n", (void *)k_track->next, k_track->n);
 		k_track = k_track->next;
 		count++;
 	}
