@@ -13,7 +13,9 @@ size_t free_listint_safe(listint_t **h)
 	size_t count;
 	listint_t *k_track, *temp;
 
-	if (h == NULL || *h == NULL)
+	if (h == NULL)
+		return (0);
+	if (*h == NULL)
 		return (0);
 	k_track = *h;
 	while (k_track != NULL)
