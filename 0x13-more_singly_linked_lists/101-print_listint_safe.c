@@ -18,6 +18,11 @@ size_t print_listint_safe(const listint_t *head)
 	if (head == NULL)
 		exit(98);
 	k_track = head;
+	if (k_track->next == NULL)
+	{
+		printf("[%p] %d\n", NULL, k_track->n);
+		return (1);
+	}
 	while (k_track != NULL)
 	{
 		printf("[%p] %d\n", (void *)k_track->next, k_track->n);
