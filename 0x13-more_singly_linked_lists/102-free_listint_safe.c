@@ -18,6 +18,11 @@ size_t free_listint_safe(listint_t **h)
 	if (*h == NULL)
 		return (0);
 	k_track = *h;
+	if (k_track->next == NULL)
+	{
+		free(k_track);
+		return (1);
+	}
 	while (k_track != NULL)
 	{
 		temp = k_track;
