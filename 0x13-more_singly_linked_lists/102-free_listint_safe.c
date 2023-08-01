@@ -3,7 +3,7 @@
 
 /**
  * free_listint_safe - free a listint_t list
- * @head: double pointer to the first node
+ * @h: double pointer to the first node
  *
  * Return: return the size of the list that was free'd
  */
