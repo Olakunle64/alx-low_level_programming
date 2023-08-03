@@ -1,4 +1,5 @@
 #include "main.h"
+#include <stddef.h>
 
 /**
  * _strlen - count the number of characters in a string
@@ -7,7 +8,7 @@
  * Return: return the length of the string.
  */
 
-int _strlen(char *str)
+int _strlen(const char *str)
 {
 	int i = 0;
 
@@ -62,7 +63,7 @@ int char_num(char c)
 
 unsigned int binary_to_unit(const char *b)
 {
-	unsigned int i, j;
+	int i, j;
 	unsigned int mul = 0;
 
 	if (b == NULL)
@@ -72,7 +73,7 @@ unsigned int binary_to_unit(const char *b)
 		if (!(b[i] >= 48 && b[i] <= 49))
 			return (0);
 	}
-	if (strlen(b) > 32)
+	if (_strlen(b) > 32)
 		return (0);
 	for (i = 0, j = _strlen(b) - 1; i < _strlen(b); i++, j--)
 	{
