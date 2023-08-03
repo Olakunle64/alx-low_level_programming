@@ -1,6 +1,22 @@
 #include "main.h"
-#include <string.h>
-#include <stddef.h>
+
+/**
+ * _strlen - count the number of characters in a string
+ * @str: string
+ *
+ * Return: return the length of the string.
+ */
+
+int _strlen(char *str)
+{
+	int i = 0;
+
+	while (str[i] != '\0')
+	{
+		i++;
+	}
+	return (i);
+}
 
 /**
  * power - find the value of x raised to power of y
@@ -46,19 +62,19 @@ int char_num(char c)
 
 unsigned int binary_to_unit(const char *b)
 {
-	size_t i, j;
+	unsigned int i, j;
 	unsigned int mul = 0;
 
 	if (b == NULL)
 		return (0);
-	for (i = 0; i < strlen(b); i++)
+	for (i = 0; i < _strlen(b); i++)
 	{
 		if (!(b[i] >= 48 && b[i] <= 49))
 			return (0);
 	}
 	if (strlen(b) > 32)
 		return (0);
-	for (i = 0, j = strlen(b) - 1; i < strlen(b); i++, j--)
+	for (i = 0, j = _strlen(b) - 1; i < _strlen(b); i++, j--)
 	{
 		mul += char_num(b[i]) * power(2, j);
 	}
