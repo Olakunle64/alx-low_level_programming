@@ -2,7 +2,7 @@
 #include <stddef.h>
 
 /**
- * binary_to_unit - convert a binary number to an unsigned int
+ * binary_to_uint - convert a binary number to an unsigned int
  * @b: string containing the bits
  *
  * Return: return the converted number or 0 if there is one or more
