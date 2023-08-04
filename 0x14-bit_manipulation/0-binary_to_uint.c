@@ -1,4 +1,5 @@
 #include "main.h"
+#include <stddef.h>
 
 /**
  * binary_to_unit - convert a binary number to an unsigned int
@@ -8,7 +9,7 @@
  * chars in the string b that is not 0 or 1 or when b is NULL
  */
 
-unsigned int binary_to_unit(const char *b)
+unsigned int binary_to_uint(const char *b)
 {
 	size_t i;
 	unsigned int val = 0;
