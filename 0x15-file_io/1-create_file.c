@@ -3,6 +3,7 @@
 #include <fcntl.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <string.h>
 
 /**
  * create_file - create a file
@@ -18,6 +19,7 @@ int create_file(const char *filename, char *text_content)
 {
 	int file_des;
 	ssize_t by_c;
+	size_t len = strlen(text_content);
 
 	if (filename == NULL)
 		return (-1);
@@ -29,7 +31,7 @@ int create_file(const char *filename, char *text_content)
 	}
 	if (text_content != NULL)
 	{
-		by_c = write(file_des, text_content, sizeof(text_content) - 2);
+		by_c = write(file_des, text_content, len);
 		if (by_c == -1)
 		{
 			close(file_des);
