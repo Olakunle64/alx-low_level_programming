@@ -2,6 +2,7 @@
 #include <unistd.h>
 #include <fcntl.h>
 #include <stdlib.h>
+#include "main.h"
 
 /**
  * read_textfile - read a test of file and print it to the
