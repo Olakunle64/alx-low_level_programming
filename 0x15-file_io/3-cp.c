@@ -56,7 +56,6 @@ int main(int ac, char **argv)
  * into it.
  * @argv2: file name
  * @buffer: string to copy to the file argv2
- * @file_des: file descriptor
  * @count: number of chars read
  *
  * Return: void.
