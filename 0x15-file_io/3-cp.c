@@ -65,9 +65,10 @@ int main(int ac, char **argv)
 void create_file(char *argv2, char *buffer, int file_des, int count)
 {
 	ssize_t by_c;
+	int flag;
 
 	if (access(argv2, F_OK) == 0)
-		file_des = open(argv2, O_RDWR | O_CREAT | O_TRUNC);
+		file_des = open(argv2, O_WRONLY | O_TRUNC);
 	else
 		file_des = open(argv2, O_RDWR | O_CREAT | O_TRUNC, 0664);
 	if (file_des == -1)
@@ -84,12 +85,14 @@ void create_file(char *argv2, char *buffer, int file_des, int count)
 		close(file_des);
 		exit(99);
 	}
-	by_c = close(file_des);
-	if (by_c == -1)
+	flag = close(file_des);
+	if (flag == -1)
 	{
 		dprintf(2, "Error: Can't close fd %d\n", file_des);
+		free(buffer);
 		exit(100);
 	}
+	free(buffer);
 }
 
 
