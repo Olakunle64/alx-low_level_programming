@@ -48,6 +48,7 @@ int main(int ac, char **argv)
 	}
 	close(file_des);
 	create_file(argv[2], buffer, count);
+	free(buffer);
 	return (0);
 }
 
@@ -91,7 +92,6 @@ void create_file(char *argv2, char *buffer, int count)
 		free(buffer);
 		exit(100);
 	}
-	free(buffer);
 }
 
 
