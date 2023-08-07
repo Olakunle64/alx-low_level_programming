@@ -32,11 +32,6 @@ int create_file(const char *filename, char *text_content)
 	if (text_content != NULL)
 	{
 		by_c = write(file_des, text_content, len);
-		if (by_c == -1)
-		{
-			close(file_des);
-			return (-1);
-		}
 	}
 	close(file_des);
 	return (1);
