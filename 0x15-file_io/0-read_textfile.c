@@ -38,8 +38,7 @@ ssize_t read_textfile(const char *filename, size_t letters)
 		free(buffer);
 		return (0);
 	}
-	w_byte = write(1, buffer, (count < (ssize_t)letters) ?
-			(size_t)count : letters);
+	w_byte = write(1, buffer, count);
 	if (w_byte != count)
 	{
 		close(file_des);
