@@ -20,7 +20,7 @@ ssize_t read_textfile(const char *filename, size_t letters)
 	ssize_t count, w_byte;
 	char *buffer;
 
-	if (filename == NULL)
+	if (filename == NULL || access(filename, F_OK) == -1)
 		return (0);
 	buffer = malloc(sizeof(char) * letters);
 	if (buffer == NULL)
@@ -34,11 +34,6 @@ ssize_t read_textfile(const char *filename, size_t letters)
 	}
 	count = read(file_des, buffer, letters);
 	if (count == 0)
-	{
-		close(file_des);
-		free(buffer);
-		return (0);
-	}
 	w_byte = write(1, buffer, (count < (ssize_t)letters) ?
 			(size_t)count : letters);
 	if (w_byte != count)
