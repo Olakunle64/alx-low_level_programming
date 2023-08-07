@@ -41,7 +41,7 @@ ssize_t read_textfile(const char *filename, size_t letters)
 	}
 	w_byte = write(1, buffer, (count < (ssize_t)letters) ?
 			(size_t)count : letters);
-	if (w_byte != count && w_byte == -1)
+	if (w_byte != count)
 	{
 		close(file_des);
 		free(buffer);
