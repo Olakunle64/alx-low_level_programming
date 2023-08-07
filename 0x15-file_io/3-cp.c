@@ -3,7 +3,7 @@
 #include <unistd.h>
 #include <stdlib.h>
 
-void create_file(char *argv2, char *buffer, int file_des, int count);
+void create_file(char *argv2, char *buffer, int count);
 
 /**
  * main - write a program that copies the content of
@@ -47,7 +47,7 @@ int main(int ac, char **argv)
 		return (0);
 	}
 	close(file_des);
-	create_file(argv[2], buffer, file_des, count);
+	create_file(argv[2], buffer, count);
 	return (0);
 }
 
@@ -62,15 +62,15 @@ int main(int ac, char **argv)
  * Return: void.
  */
 
-void create_file(char *argv2, char *buffer, int file_des, int count)
+void create_file(char *argv2, char *buffer, int count)
 {
 	ssize_t by_c;
-	int flag;
+	int flag, file_des;
 
 	if (access(argv2, F_OK) == 0)
 		file_des = open(argv2, O_WRONLY | O_TRUNC);
 	else
-		file_des = open(argv2, O_RDWR | O_CREAT | O_TRUNC, 0664);
+		file_des = open(argv2, O_WRONLY | O_CREAT | O_TRUNC, 0664);
 	if (file_des == -1)
 	{
 		free(buffer);
