@@ -67,7 +67,12 @@ void create_file(char *argv2, char *buffer, int count)
 	ssize_t by_c;
 	int flag, file_des;
 
-	if (access(argv2, F_OK) == 0)
+	if (access(argv2, F_OK) == 0 && access(argv2, R_OK) != 0)
+	{
+		dprintf(2, "Error: Can't write to %s\n", argv2);
+		exit(99);
+	}
+	else if (access(argv2, F_OK | R_OK) == 0)
 		file_des = open(argv2, O_WRONLY | O_TRUNC);
 	else
 		file_des = open(argv2, O_WRONLY | O_CREAT | O_TRUNC, 0664);
