@@ -3,7 +3,7 @@
 #include <unistd.h>
 #include <stdlib.h>
 
-void create_file(char *argv2, char *buffer, int *fd);
+void create_file(char *argv2, char *argv1, char *buffer, int *fd);
 
 /**
  * main - write a program that copies the content of
@@ -33,7 +33,7 @@ int main(int ac, char **argv)
 	file_des = open(argv[1], O_RDONLY);
 	if (file_des == -1)
 		exit(1);
-	create_file(argv[2], buffer, &file_des);
+	create_file(argv[2], argv[1], buffer, &file_des);
 	flag = close(file_des);
 	if (flag == -1)
 	{
@@ -46,14 +46,15 @@ int main(int ac, char **argv)
 /**
  * create_file - create a file and copy the content of buffer
  * into it.
- * @argv2: file name
+ * @argv2: file_to
+ * @argv1: file_from
  * @buffer: string to copy to the file argv2
  * @fd: pointer to the file descriptor
  *
  * Return: void.
  */
 
-void create_file(char  *argv2, char *buffer, int *fd)
+void create_file(char *argv2, char *argv1, char *buffer, int *fd)
 {
 	ssize_t by_c;
 	int flag, file_des;
@@ -75,6 +76,12 @@ void create_file(char  *argv2, char *buffer, int *fd)
 	}
 	while ((count = read(*fd, buffer, 1024)) > 0)
 	{
+		if (count == -1)
+		{
+			dprintf(2, "Error: Can't read from file %s\n", argv1);
+			close(*fd);
+			exit(99);
+		}
 		by_c = write(file_des, buffer, count);
 		if (by_c == -1)
 		{
