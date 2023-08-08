@@ -23,7 +23,7 @@ int main(int ac, char **argv)
 	if (ac != 3)
 	{
 		dprintf(2, "Usage: cp file_from file_to\n");
-		exit(97);
+i		exit(97);
 	}
 	if (access(argv[1], F_OK | R_OK) != 0)
 	{
@@ -32,19 +32,19 @@ int main(int ac, char **argv)
 	}
 	file_des = open(argv[1], O_RDONLY);
 	if (file_des == -1)
-		return (0);
+		exit(1);
 	buffer = malloc(sizeof(char) * 1024);
 	if (buffer == NULL)
 	{
 		close(file_des);
-		return (0);
+		exit(1);
 	}
 	count = read(file_des, buffer, 1024);
 	if (count == -1)
 	{
 		close(file_des);
 		free(buffer);
-		return (0);
+		exit(1);
 	}
 	close(file_des);
 	create_file(argv[2], buffer, count);
