@@ -82,6 +82,7 @@ void create_file(char  *argv2, char *buffer, int *fd)
 			close(file_des);
 			exit(99);
 		}
+		/*lseek(*fd, count, SEEK_CUR);*/
 	}
 	flag = close(file_des);
 	if (flag == -1)
@@ -90,3 +91,6 @@ void create_file(char  *argv2, char *buffer, int *fd)
 		exit(100);
 	}
 }
+
+
+
