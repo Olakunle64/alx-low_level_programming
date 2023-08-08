@@ -22,12 +22,12 @@ int main(int ac, char **argv)
 
 	if (ac != 3)
 	{
-		dprintf(2, "Usage: cp file_from file_to\n");
+		dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n");
 		exit(97);
 	}
 	if (access(argv[1], F_OK | R_OK) != 0)
 	{
-		dprintf(2, "Error: Can't read from file %s\n", argv[1]);
+		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
 		exit(98);
 	}
 	file_des = open(argv[1], O_RDONLY);
@@ -37,7 +37,7 @@ int main(int ac, char **argv)
 	flag = close(file_des);
 	if (flag == -1)
 	{
-		dprintf(2, "Error: Can't close fd %d\n", file_des);
+		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", file_des);
 		exit(100);
 	}
 	return (0);
@@ -62,7 +62,7 @@ void create_file(char *argv2, char *argv1, char *buffer, int *fd)
 
 	if (access(argv2, F_OK) == 0 && access(argv2, W_OK) != 0)
 	{
-		dprintf(2, "Error: Can't write to %s\n", argv2);
+		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv2);
 		exit(99);
 	}
 	else if (access(argv2, F_OK | W_OK) == 0)
@@ -71,21 +71,22 @@ void create_file(char *argv2, char *argv1, char *buffer, int *fd)
 		file_des = open(argv2, O_WRONLY | O_CREAT | O_TRUNC, 0664);
 	if (file_des == -1)
 	{
-		dprintf(2, "Error: Can't write to %s\n", argv2);
+		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv2);
 		exit(99);
 	}
 	while ((count = read(*fd, buffer, 1024)) > 0)
 	{
 		if (count == -1)
 		{
-			dprintf(2, "Error: Can't read from file %s\n", argv1);
+			dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv1);
 			close(*fd);
+			close(file_des);
 			exit(98);
 		}
 		by_c = write(file_des, buffer, count);
 		if (by_c == -1)
 		{
-			dprintf(2, "Error: Can't write to %s\n", argv2);
+			dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv2);
 			close(file_des);
 			exit(99);
 		}
@@ -93,7 +94,7 @@ void create_file(char *argv2, char *argv1, char *buffer, int *fd)
 	flag = close(file_des);
 	if (flag == -1)
 	{
-		dprintf(2, "Error: Can't close fd %d\n", file_des);
+		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", file_des);
 		exit(100);
 	}
 }
