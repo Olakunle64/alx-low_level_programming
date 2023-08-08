@@ -76,13 +76,6 @@ void create_file(char *argv2, char *argv1, char *buffer, int *fd)
 	}
 	while ((count = read(*fd, buffer, 1024)) > 0)
 	{
-		if (count == -1)
-		{
-			dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv1);
-			close(*fd);
-			close(file_des);
-			exit(98);
-		}
 		by_c = write(file_des, buffer, count);
 		if (by_c == -1)
 		{
@@ -90,6 +83,13 @@ void create_file(char *argv2, char *argv1, char *buffer, int *fd)
 			close(file_des);
 			exit(99);
 		}
+	}
+	if (count == -1)
+	{
+		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv1);
+		close(*fd);
+		close(file_des);
+		exit(98);
 	}
 	flag = close(file_des);
 	if (flag == -1)
