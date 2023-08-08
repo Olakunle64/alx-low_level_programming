@@ -80,7 +80,7 @@ void create_file(char *argv2, char *argv1, char *buffer, int *fd)
 		{
 			dprintf(2, "Error: Can't read from file %s\n", argv1);
 			close(*fd);
-			exit(99);
+			exit(98);
 		}
 		by_c = write(file_des, buffer, count);
 		if (by_c == -1)
