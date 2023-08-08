@@ -23,7 +23,7 @@ int main(int ac, char **argv)
 	if (ac != 3)
 	{
 		dprintf(2, "Usage: cp file_from file_to\n");
-i		exit(97);
+		exit(97);
 	}
 	if (access(argv[1], F_OK | R_OK) != 0)
 	{
