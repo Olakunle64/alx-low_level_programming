@@ -3,7 +3,7 @@
 #include <unistd.h>
 #include <stdlib.h>
 
-void create_file(char *argv2, char *buffer, int count);
+void create_file(char *argv2, char *buffer, int *fd);
 
 /**
  * main - write a program that copies the content of
@@ -17,8 +17,8 @@ void create_file(char *argv2, char *buffer, int count);
 int main(int ac, char **argv)
 {
 	int file_des;
-	ssize_t count;
-	char *buffer;
+	char buffer[1024];
+	int flag;
 
 	if (ac != 3)
 	{
@@ -33,22 +33,13 @@ int main(int ac, char **argv)
 	file_des = open(argv[1], O_RDONLY);
 	if (file_des == -1)
 		exit(1);
-	buffer = malloc(sizeof(char) * 1024);
-	if (buffer == NULL)
+	create_file(argv[2], buffer, &file_des);
+	flag = close(file_des);
+	if (flag == -1)
 	{
-		close(file_des);
-		exit(1);
+		dprintf(2, "Error: Can't close fd %d\n", file_des);
+		exit(100);
 	}
-	count = read(file_des, buffer, 1024);
-	if (count == -1)
-	{
-		close(file_des);
-		free(buffer);
-		exit(1);
-	}
-	close(file_des);
-	create_file(argv[2], buffer, count);
-	free(buffer);
 	return (0);
 }
 
@@ -58,14 +49,16 @@ int main(int ac, char **argv)
  * @argv2: file name
  * @buffer: string to copy to the file argv2
  * @count: number of chars read
+ * @fd: pointer to the file descriptor
  *
  * Return: void.
  */
 
-void create_file(char *argv2, char *buffer, int count)
+void create_file(char  *argv2, char *buffer, int *fd)
 {
 	ssize_t by_c;
 	int flag, file_des;
+	ssize_t count;
 
 	if (access(argv2, F_OK) == 0 && access(argv2, W_OK) != 0)
 	{
@@ -78,23 +71,24 @@ void create_file(char *argv2, char *buffer, int count)
 		file_des = open(argv2, O_WRONLY | O_CREAT | O_TRUNC, 0664);
 	if (file_des == -1)
 	{
-		free(buffer);
 		dprintf(2, "Error: Can't write to %s\n", argv2);
 		exit(99);
 	}
-	by_c = write(file_des, buffer, count);
-	if (by_c == -1)
+	while ((count = read(*fd, buffer, 1024)) > 0)
 	{
-		free(buffer);
-		dprintf(2, "Error: Can't write to %s\n", argv2);
-		close(file_des);
-		exit(99);
+		by_c = write(file_des, buffer, count);
+		if (by_c == -1)
+		{
+			dprintf(2, "Error: Can't write to %s\n", argv2);
+			close(file_des);
+			exit(99);
+		}
+		lseek(*fd, count, SEEK_CUR);
 	}
 	flag = close(file_des);
 	if (flag == -1)
 	{
 		dprintf(2, "Error: Can't close fd %d\n", file_des);
-		free(buffer);
 		exit(100);
 	}
 }
