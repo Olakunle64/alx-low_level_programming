@@ -10,13 +10,14 @@
 
 void print_number(int n)
 {
-	unsigned m = n;
+	unsigned m;
 
-	if (m < 0)
+	if (n < 0)
 	{
 		_putchar('-');
-		m = -m;
+		m = -n;
 	}
+	m = n;
 	if (m < 10)
 	{
 		_putchar(m + '0');
