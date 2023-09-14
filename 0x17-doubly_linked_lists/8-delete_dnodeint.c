@@ -40,7 +40,7 @@ int delete_dnodeint_at_index(dlistint_t **head, unsigned int index)
 	dlistint_t *current, *temp;
 	size_t node_count = dlistint_len((const dlistint_t *)*head), i = 0;
 
-	if (index > node_count || head == NULL || *head == NULL)
+	if (index >= node_count || head == NULL || *head == NULL)
 		return (-1);
 	current = *head;
 	if (index == 0)
@@ -56,8 +56,9 @@ int delete_dnodeint_at_index(dlistint_t **head, unsigned int index)
 			current = current->next;
 			i++;
 		}
-		current->prev->next = NULL;
-		free(current);
+		temp = current->next;
+		current->next = NULL;
+		free(temp);
 		return (1);
 	}
 	while (i < index - 1)
