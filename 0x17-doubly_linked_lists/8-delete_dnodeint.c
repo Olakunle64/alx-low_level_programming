@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include "lists.h"
+#include <stdlib.h>
 
 /**
  * dlistint_len - count the number of elements in a linked
@@ -26,7 +27,8 @@ size_t dlistint_len(const dlistint_t *h)
 }
 
 /**
- * delete_dnodeint_at_index - delete the node at index index of a dlistint_t linked list
+ * delete_dnodeint_at_index - delete the node at index
+ * index of a dlistint_t linked list
  * @head: double pointer to the first node
  * @index: index of the node to be deleted
  *
@@ -36,17 +38,17 @@ size_t dlistint_len(const dlistint_t *h)
 int delete_dnodeint_at_index(dlistint_t **head, unsigned int index)
 {
 	dlistint_t *current, *temp;
-	size_t node_count = dlistint_len((const dlistint_t *)*h), i = 0;
+	size_t node_count = dlistint_len((const dlistint_t *)*head), i = 0;
 
 	if (index > node_count || head == NULL || *head == NULL)
 		return (-1);
 	current = *head;
-	if (idx == 0)
+	if (index == 0)
 	{
 		free(current);
 		*head = NULL;
 	}
-	if (idx == node_count - 1)
+	if (index == node_count - 1)
 	{
 		while (i < index - 1)
 		{
@@ -55,9 +57,8 @@ int delete_dnodeint_at_index(dlistint_t **head, unsigned int index)
 		}
 		current->prev->next = NULL;
 		free(current);
+		return (1);
 	}
-	else
-	{
 	while (i < index - 1)
 	{
 		current = current->next;
@@ -67,10 +68,5 @@ int delete_dnodeint_at_index(dlistint_t **head, unsigned int index)
 	current->next = current->next->next;
 	current->next->next->prev = current;
 	free(temp);
-	}
+	return (1);
 }
-
-
-
-
-
