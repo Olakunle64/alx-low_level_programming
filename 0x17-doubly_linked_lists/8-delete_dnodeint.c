@@ -47,6 +47,7 @@ int delete_dnodeint_at_index(dlistint_t **head, unsigned int index)
 	{
 		free(current);
 		*head = NULL;
+		return (1);
 	}
 	if (index == node_count - 1)
 	{
