@@ -40,12 +40,14 @@ dlistint_t *insert_dnodeint_at_index(dlistint_t **h, unsigned int idx, int n)
 	dlistint_t *current, *newnode, *store;
 	size_t node_count = dlistint_len((const dlistint_t *)*h), i = 0;
 
-	if (idx > node_count)
+	if (idx >= node_count)
 		return (NULL);
-	if (h == NULL || *h == NULL)
+	if ((h == NULL || *h == NULL) && idx == 0)
 	{
-		return (NULL);
+		return (add_dnodeint(h, (const int)n));
 	}
+	if (idx == 0)
+		return (add_dnodeint(h, (const int)n));
 	newnode = malloc(sizeof(dlistint_t));
 	if (newnode == NULL)
 		return (NULL);
