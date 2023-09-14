@@ -37,17 +37,15 @@ size_t dlistint_len(const dlistint_t *h)
 
 dlistint_t *insert_dnodeint_at_index(dlistint_t **h, unsigned int idx, int n)
 {
-	dlistint_t *current, *newnode, *store;
+	dlistint_t *current, *newnode;
 	size_t node_count = dlistint_len((const dlistint_t *)*h), i = 0;
 
-	if (idx >= node_count)
+	if (idx > node_count)
 		return (NULL);
 	if (idx == 0)
 		return (add_dnodeint(h, (const int)n));
-	if (h == NULL || *h == NULL)
-	{
-		return (NULL);
-	}
+	if (idx == node_count)
+		return (add_dnodeint_end(h, (const int)n));
 	newnode = malloc(sizeof(dlistint_t));
 	if (newnode == NULL)
 		return (NULL);
@@ -60,10 +58,9 @@ dlistint_t *insert_dnodeint_at_index(dlistint_t **h, unsigned int idx, int n)
 		current = current->next;
 		i++;
 	}
-	newnode->next = current->next;
 	newnode->prev = current;
-	store = current->next;
+	newnode->next = current->next;
 	current->next = newnode;
-	store->prev = newnode;
+	newnode->next->prev = newnode;
 	return (newnode);
 }
