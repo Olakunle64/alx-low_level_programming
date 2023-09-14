@@ -69,8 +69,8 @@ int delete_dnodeint_at_index(dlistint_t **head, unsigned int index)
 		i++;
 	}
 	temp = current->next;
-	current->next = current->next->next;
-	current->next->next->prev = current;
+	current->next = temp->next;
+	temp->next->prev = current;
 	free(temp);
 	return (1);
 }
