@@ -28,7 +28,7 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	hash_node_t *item, *current;
 	unsigned long int index;
 
-	if (key == NULL)
+	if (key == NULL || *key == '\0')
 		return (0);
 	item = malloc(sizeof(hash_node_t));
 	if (item == NULL)
@@ -45,13 +45,12 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	}
 	else
 	{
-		if (strcmp(ht->array[index]->key, item->key) == 0)
+		if (strcmp(current->key, item->key) == 0)
 		{
-			if (item->value != NULL)
-				strcpy(ht->array[index]->value, value);
-			free(item->value);
+			strcpy(ht->current->value, value);
+			/*free(item->value);
 			free(item->key);
-			free(item);
+			free(item);*/
 		}
 		else
 		{
