@@ -39,5 +39,6 @@ unsigned long int key_index(const unsigned char *key, unsigned long int size);
 void handle_collision(hash_node_t **old_item, hash_node_t *item);
 int hash_table_set(hash_table_t *ht, const char *key, const char *value);
 char *hash_table_get(const hash_table_t *ht, const char *key);
+void hash_table_print(const hash_table_t *ht);
 
 #endif /* HASH_TABLE_H */
