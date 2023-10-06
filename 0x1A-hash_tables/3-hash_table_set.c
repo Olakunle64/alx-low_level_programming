@@ -72,7 +72,12 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	else
 	{
 		if (strcmp(ht->array[index]->key, key) == 0)
+		{
 			strcpy(ht->array[index]->value, item->value);
+			free(item->value);
+			free(item->key);
+			free(item);
+		}
 		else
 			handle_collision(&(ht->array[index]), &item);
 		return (1);
