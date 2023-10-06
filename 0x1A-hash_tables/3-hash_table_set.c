@@ -45,26 +45,23 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	item->value = NULL;
 	item->next = NULL;
 	index = key_index((const unsigned char *)key, ht->size);
-	if (index == ht->size)
+	/*if (index == ht->size)
 	{
 		free(item);
 		return (0);
-	}
+	}*/
 	item->key = strdup(key);
 	if (item->key == NULL)
 	{
 		free(item);
 		return (0);
 	}
-	if (value != NULL)
-	{
 	item->value = strdup(value);
 	if (item->value == NULL)
 	{
 		free(item->key);
 		free(item);
 		return (0);
-	}
 	}
 	current = ht->array[index];
 	if (current == NULL)
