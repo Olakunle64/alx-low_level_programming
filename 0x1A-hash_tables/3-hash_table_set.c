@@ -45,11 +45,6 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	item->value = NULL;
 	item->next = NULL;
 	index = key_index((const unsigned char *)key, ht->size);
-	/*if (index == ht->size)
-	{
-		free(item);
-		return (0);
-	}*/
 	item->key = strdup(key);
 	if (item->key == NULL)
 	{
@@ -71,15 +66,15 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	}
 	else
 	{
-		if (strcmp(ht->array[index]->key, key) == 0)
+		/*if (strcmp(ht->array[index]->key, key) == 0)
 		{
 			strcpy(ht->array[index]->value, item->value);
 			free(item->value);
 			free(item->key);
 			free(item);
 		}
-		else
-			handle_collision(&(ht->array[index]), &item);
+		else*/
+		handle_collision(&(ht->array[index]), &item);
 		return (1);
 	}
 	return (0);
