@@ -9,19 +9,19 @@
  * Return: return the updated table
  */
 
-void handle_collision(hash_node_t **old_item, hash_node_t **item)
+void handle_collision(hash_node_t *old_item, hash_node_t *item)
 {
 	hash_node_t *current;
 
-	current = *old_item;
+	current = old_item;
 	if (current->next == NULL)
 	{
-		current->next = *item;
+		current->next = item;
 	}
 	else
 	{
-		(*item)->next = current->next;
-		current->next = *item;
+		item->next = current->next;
+		current->next = item;
 	}
 }
 /**
@@ -41,8 +41,6 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	item = malloc(sizeof(hash_node_t));
 	if (item == NULL)
 		return (0);
-	item->key = NULL;
-	item->value = NULL;
 	item->next = NULL;
 	index = key_index((const unsigned char *)key, ht->size);
 	item->key = strdup(key);
@@ -66,15 +64,15 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	}
 	else
 	{
-		/*if (strcmp(ht->array[index]->key, key) == 0)
+		if (strcmp(ht->array[index]->key, item->key) == 0)
 		{
 			strcpy(ht->array[index]->value, item->value);
 			free(item->value);
 			free(item->key);
 			free(item);
 		}
-		else*/
-		handle_collision(&(ht->array[index]), &item);
+		else
+			handle_collision(ht->array[index], item);
 		return (1);
 	}
 	return (0);
