@@ -5,7 +5,7 @@
  * handle_collision - to handle collision
  * @item: the item
  * @old_item: old item
- * 
+ *
  * Return: return the updated table
  */
 
