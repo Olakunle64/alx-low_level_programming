@@ -43,6 +43,7 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 		return (0);
 	item->key = NULL;
 	item->value = NULL;
+	item->next = NULL;
 	index = key_index((const unsigned char *)key, ht->size);
 	if (index == ht->size)
 	{
