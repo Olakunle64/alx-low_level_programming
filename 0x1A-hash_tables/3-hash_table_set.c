@@ -9,20 +9,10 @@
  * Return: return the updated table
  */
 
-void handle_collision(hash_node_t *old_item, hash_node_t *item)
+void handle_collision(hash_node_t **old_item, hash_node_t *item)
 {
-	hash_node_t *current;
-
-	current = old_item;
-	if (current->next == NULL)
-	{
-		current->next = item;
-	}
-	else
-	{
-		item->next = current->next;
-		current->next = item;
-	}
+	item->next = *old_item;
+	*old_item = item;
 }
 /**
  * hash_table_set - add an element to the hash table
@@ -72,7 +62,9 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 			free(item);
 		}
 		else
-			handle_collision(ht->array[index], item);
+		{
+			handle_collision(&(ht->array[index]), item);
+		}
 		return (1);
 	}
 	return (0);
