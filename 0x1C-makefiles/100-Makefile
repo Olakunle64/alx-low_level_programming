@@ -1,5 +1,8 @@
-#define RM rm -f
-define CFLAGS -Wall -Werror -Wextra -pedantic
+define RM
+	rm -f
+endef
+define CFLAGS
+	-Wall -Werror -Wextra -pedantic
 endef
 CC = gcc
 SRC = school.c main.c
