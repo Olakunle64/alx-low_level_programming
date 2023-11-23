@@ -1,9 +1,6 @@
 define RM
 	rm -f
 endef
-define CFLAGS
-	-Wall -Werror -Wextra -pedantic
-endef
 CC = gcc
 SRC = school.c main.c
 OBJ = $(SRC:.c=.o)
@@ -12,7 +9,7 @@ NAME = school
 all: $(NAME)
 
 $(NAME): $(OBJ) m.h
-	$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
+	$(CC) -Wall -Werror -Wextra -pedantic $(OBJ) -o $(NAME)
 .PHONY: clean oclean fclean re all
 
 clean:
