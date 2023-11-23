@@ -11,7 +11,7 @@ $(NAME): $(OBJ)
 	$(CC) $(OBJ) -o $(NAME)
 
 %.o: %.c
-	$(CC) $(CFLAGS) -c $<
+	$(CC) $(CFLAGS) -c $(SRC)
 
 clean:
 	$(RM) *~ *# $(NAME)
