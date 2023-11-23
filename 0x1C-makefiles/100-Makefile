@@ -1,5 +1,6 @@
 #define RM rm -f
-#define CFLAGS -Wall -Werror -Wextra -pedantic
+define CFLAGS -Wall -Werror -Wextra -pedantic
+endef
 CC = gcc
 SRC = school.c main.c
 OBJ = $(SRC:.c=.o)
@@ -7,8 +8,11 @@ NAME = school
 
 all: $(NAME)
 
-$(NAME): $(OBJ) m.h
-	$(CC) $(CFLAGS) -c $< && $(CC) $(OBJ) -o $(NAME)
+$(NAME): $(OBJ)
+	$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
+$(OBJ): m.h
+.PHONY: clean oclean fclean re all
+
 clean:
 	$(RM) *~ *# $(NAME)
 oclean:
