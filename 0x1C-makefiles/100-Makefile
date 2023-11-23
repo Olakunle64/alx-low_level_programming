@@ -11,9 +11,8 @@ NAME = school
 
 all: $(NAME)
 
-$(NAME): $(OBJ)
+$(NAME): $(OBJ) m.h
 	$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
-$^: m.h
 .PHONY: clean oclean fclean re all
 
 clean:
