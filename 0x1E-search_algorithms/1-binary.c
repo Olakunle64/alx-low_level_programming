@@ -1,5 +1,5 @@
 #include "search_algos.h"
-size_t binary_recur(int *array, int value, int start, int end);
+int binary_recur(int *array, int value, int start, int end);
 
 /**
  * print_search - print the sub array been searched
@@ -20,7 +20,7 @@ void print_search(int *array, size_t start, size_t end)
 		printf("%d", array[i]);
 		i++;
 		if (i <= end)
-			putchar(',');
+			printf(", ");
 		else
 			putchar('\n');
 	}
@@ -42,6 +42,8 @@ int binary_search(int *array, size_t size, int value)
 {
 	int index;
 
+	if (array == NULL)
+		return (-1);
 	index = binary_recur(array, value, 0, size - 1);
 	return (index);
 }
@@ -56,7 +58,7 @@ int binary_search(int *array, size_t size, int value)
  * Return: return the index of value
  */
 
-size_t binary_recur(int *array, int value, int start, int end)
+int binary_recur(int *array, int value, int start, int end)
 {
 	size_t size, mid;
 
