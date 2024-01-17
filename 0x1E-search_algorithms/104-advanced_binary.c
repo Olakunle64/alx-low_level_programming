@@ -1,6 +1,4 @@
 #include "search_algos.h"
-int binary_recur(int *array, int value, int start, int end);
-int mid_recur(int *array, int value, int start, int mid);
 
 /**
  * print_search - print the sub array been searched
@@ -28,13 +26,13 @@ void print_search(int *array, size_t start, size_t end)
 }
 
 /**
- * binary_search - search for a value in a sorted array of integers
+ * advanced_binary - search for a value in a sorted array of integers
  * using Binary search algorithm
  * @array: a pointer to the first element of the array to search in
  * @size: number of elements in array
  * @value: the value to search for
  *
- * Return: return the index where the value is located otherwise
+ * Return: return the index where the value is first located otherwise
  * return (-1) if the value is not present in the array or the array
  * is NULL
  */
@@ -86,15 +84,4 @@ int binary_recur(int *array, int value, int start, int end)
 	}
 	start = binary_recur(array, value, start, end);
 	return (start);
-}
-
-int mid_recur(int *array, int value, int start, int mid)
-{
-	if (array[mid] != value)
-		return (mid + 1);
-	if (mid == start)
-		return (mid);
-	mid = mid_recur(array, value, start, mid - 1);
-	mid = binary_recur(array, value, start, mid);
-	return (mid);
 }

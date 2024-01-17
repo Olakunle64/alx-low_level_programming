@@ -1,7 +1,5 @@
 #include "search_algos.h"
 
-int binary_recur(int *array, int value, int start, int end);
-
 /**
  * print_search - print the sub array been searched
  * @array: the pointer to the first element of the array
