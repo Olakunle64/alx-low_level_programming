@@ -12,6 +12,7 @@ int advanced_binary(int *array, size_t size, int value);
 int binary_recur(int *array, int value, int start, int end);
 void print_search(int *array, size_t start, size_t end);
 int jump_search(int *array, size_t size, int value);
+int exponential_search(int *array, size_t size, int value);
 
 /**
  * struct listint_s - singly linked list
