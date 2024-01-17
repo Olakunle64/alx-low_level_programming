@@ -69,6 +69,8 @@ listint_t *jump_list(listint_t *list, size_t size, int value)
 
 	if (!list)
 		return (NULL);
+	if (list->n == value)
+		return list;
 	f_pos = n_pos = temp = list;
 	k = sqrt(size);
 	while (n_pos)
