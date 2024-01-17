@@ -78,8 +78,18 @@ listint_t *jump_list(listint_t *list, size_t size, int value)
 		temp = f_pos;
 		f_pos = n_pos;
 		n_pos = jumper(n_pos, k);
+		if (!n_pos)
+		{
+			n_pos = f_pos;
+			while (n_pos->next)
+			{
+				n_pos = n_pos->next;
+			}
+		}
 		if (n_pos && f_pos->n < value && n_pos->n > value)
 			return (catch_index(&n_pos, &f_pos, value));
+		if (!n_pos->next)
+			n_pos = n_pos->next;
 		if (!n_pos)
 		{
 			store = f_pos;
