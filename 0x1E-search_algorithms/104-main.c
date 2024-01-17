@@ -15,7 +15,7 @@ int main(void)
     size_t size = sizeof(array) / sizeof(array[0]);
 
     printf("Found %d at index: %d\n\n", 8, advanced_binary(array, size, 8));
-    printf("Found %d at index: %d\n\n", 6, advanced_binary(array, 0, 6));
+    printf("Found %d at index: %d\n\n", 6, advanced_binary(array, -1, 6));
     printf("Found %d at index: %d\n", 999, advanced_binary(array, size, 999));
     return (EXIT_SUCCESS);
 }
