@@ -1,5 +1,4 @@
 #include "search_algos.h"
-
 int binary_recur(int *array, int value, int start, int end);
 
 /**
@@ -63,9 +62,11 @@ int binary_recur(int *array, int value, int start, int end)
 {
 	size_t size, mid;
 
-	print_search(array, start, end);
+	if (array[start] == value && start != end)
+		print_search(array, start, end);
 	if (array[start] == value)
 		return (start);
+ print_search(array, start, end);
 	if (start == end)
 		return (-1);
 	size = end - start;
@@ -77,7 +78,10 @@ int binary_recur(int *array, int value, int start, int end)
 	else
 	{
 		if (array[mid] == value)
-			return (mid);
+ {
+  print_search(array, mid, end);
+		return (mid);
+ }
 		start = mid + 1;
 	}
 	start = binary_recur(array, value, start, end);
