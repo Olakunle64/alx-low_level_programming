@@ -77,7 +77,10 @@ int binary_recur(int *array, int value, int start, int end)
 	else
 	{
 		if (array[mid] == value)
+		{
+			/*print_search(array, mid, mid);*/
 			return (mid);
+		}
 		start = mid + 1;
 	}
 	start = binary_recur(array, value, start, end);
