@@ -13,16 +13,18 @@
 
 listint_t *catch_index(listint_t **n_pos, listint_t **f_pos, int value)
 {
+	listint_t *temp = *f_pos;
+
 	printf("Value checked at index [%ld] = [%d]\n", (*n_pos)->index, (*n_pos)->n);
 	printf("Value found between indexes [%ld] and [%ld]\n",
 			(*f_pos)->index, (*n_pos)->index);
-	while (*f_pos != *n_pos)
+	while (temp != *n_pos)
 	{
 		printf("Value checked at index [%ld] = [%d]\n",
-				(*f_pos)->index, (*f_pos)->n);
-		if ((*f_pos)->n == value)
-			return (*f_pos);
-		*f_pos = (*f_pos)->next;
+				temp->index, temp->n);
+		if (temp->n == value)
+			return (temp);
+		temp = temp->next;
 	}
 	printf("Value checked at index [%ld] = [%d]\n", (*n_pos)->index, (*n_pos)->n);
 	if ((*n_pos)->n == value)

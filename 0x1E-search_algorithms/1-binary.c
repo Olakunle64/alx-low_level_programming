@@ -67,7 +67,11 @@ int binary_recur(int *array, int value, int start, int end)
 		return (-1);
 	print_search(array, start, end);
 	if (array[start] == value)
+	{
 		return (start);
+	}
+	if (start == end)
+		return (-1);
 	size = end - start;
 	mid = start + (size / 2);
 	if (array[mid] > value)
@@ -78,7 +82,6 @@ int binary_recur(int *array, int value, int start, int end)
 	{
 		if (array[mid] == value)
 		{
-			/*print_search(array, mid, mid);*/
 			return (mid);
 		}
 		start = mid + 1;
